@@ -1,3 +1,4 @@
+import { useSentimentData } from "@/hooks/useSentimentData";
 import {
   LineChart,
   Line,
@@ -7,33 +8,34 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { useMemo } from "react";
 
-interface SentimentChartProps {
-  ticker: string;
-}
-
-export function SentimentChart({ ticker }: SentimentChartProps) {
-  const data = useMemo(() => {
-    return Array.from({ length: 7 }, (_, i) => ({
-      date: new Date(Date.now() - i * 24 * 60 * 60 * 1000).toLocaleDateString(),
-      sentiment: Math.random() * 100,
-    })).reverse();
-  }, [ticker]);
+export function SentimentChart({ ticker }: { ticker: string }) {
+  const { data: sentimentData, loading, error } = useSentimentData(ticker);
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-sm text-black">
       <h2 className="text-lg font-semibold mb-4">Market Sentiment Analysis</h2>
       <div className="h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="sentiment" stroke="#2563eb" />
-          </LineChart>
-        </ResponsiveContainer>
+        {loading ? (
+          <p className="text-gray-500">Loading sentiment data...</p>
+        ) : error ? (
+          <p className="text-red-500">Error: {error}</p>
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={sentimentData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis domain={[0, 100]} />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="sentiment"
+                stroke="#2563eb"
+                strokeWidth={2}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </div>
   );
