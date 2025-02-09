@@ -11,19 +11,24 @@ export function Navbar() {
             </span>
           </div>
           <div className="flex items-center gap-4 text-black">
-            <button title="bell" className="p-2 rounded-lg">
+            <div title="notification" className="p-2 cursor-pointer rounded-lg">
               <FiBell className="w-6 h-6" />
-            </button>
-            <button title="settings" className="p-2 rounded-lg">
+            </div>
+            <div title="settings" className="p-2 cursor-pointer rounded-lg">
               <FiSettings className="w-6 h-6" />
-            </button>
-            <button
-              title="user"
-              className="flex items-center gap-2 p-2 rounded-lg"
+            </div>
+            <div
+              title="user profile"
+              className="flex items-center gap-2 p-2 cursor-pointer rounded-lg"
             >
               <FiUser className="w-6 h-6" />
               <span>Profile</span>
-            </button>
+            </div>
+            <div>
+              <button className="px-4 py-2 text-white bg-blue-600 rounded-lg">
+                connect wallet
+              </button>
+            </div>
           </div>
         </div>
       </div>
