@@ -6,7 +6,14 @@ export const config = {
   alphaVantageApiKey: process.env.ALPHA_VANTAGE_API_KEY,
   newsApiKey: process.env.NEWS_API_KEY,
   cors: {
-    origin: "http://localhost:3000", // Your Next.js frontend URL
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     credentials: true,
   },
 };
+
+console.log("Config loaded:", {
+  port: config.port,
+  alphaVantageApiKey: config.alphaVantageApiKey ? "Set" : "Not set",
+  newsApiKey: config.newsApiKey ? "Set" : "Not set",
+  corsOrigin: config.cors.origin,
+});
