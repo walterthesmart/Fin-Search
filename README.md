@@ -29,7 +29,7 @@ A comprehensive financial analysis platform that combines real-time market data 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/Fin-Search.git
+git clone https://github.com/walterthesmart/Fin-Search.git
 cd Fin-Search
 
 # Create and activate virtual environment
