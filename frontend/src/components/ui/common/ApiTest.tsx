@@ -1,10 +1,9 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { API_BASE_URL } from "@/services/api/config";
 
 export function ApiTest() {
   const [status, setStatus] = useState<string>("Testing API connection...");
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const testConnection = async () => {
@@ -18,6 +17,10 @@ export function ApiTest() {
         if (response.ok) {
           const data = await response.json();
           setStatus(`API Connected: ${data.message}`);
+          // Wait 2 seconds after successful connection before starting fade out
+          setTimeout(() => {
+            setIsVisible(false);
+          }, 2000);
         } else {
           setStatus(`API Error: ${response.status} ${response.statusText}`);
         }
@@ -34,8 +37,16 @@ export function ApiTest() {
     testConnection();
   }, []);
 
+  if (!isVisible) return null;
+
   return (
-    <div className="p-4 m-4 bg-white rounded-lg shadow">
+    <div
+      className={`
+        p-4 m-4 bg-white rounded-lg shadow
+        transition-opacity duration-500 ease-in-out
+        ${isVisible ? "opacity-100" : "opacity-0"}
+      `}
+    >
       <h2 className="text-lg font-semibold mb-2">API Connection Status</h2>
       <p
         className={
