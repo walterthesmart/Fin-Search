@@ -138,3 +138,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Your Name - [@kudiegomoney](https://twitter.com/kudiegomoney)
 Project Link: [https://github.com/walterthesmart/Fin-Search](https://github.com/walterthesmartFin-Search)
+
+![alt text](<WhatsApp Image 2025-02-09 at 16.35.28_5d8654fa-1.jpg>)
