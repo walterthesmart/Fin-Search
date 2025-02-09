@@ -1,26 +1,29 @@
+import { useNewsData } from "@/hooks/useNewsData";
 import { FiExternalLink } from "react-icons/fi";
 
-interface NewsFeedsProps {
-  ticker: string;
-}
-
-export function NewsFeeds({ ticker }: NewsFeedsProps) {
-  const news = [
-    {
-      id: 1,
-      title: "Sample news headline about the company",
-      source: "Financial Times",
-      url: "#",
-      sentiment: "positive",
-      date: "2024-02-08",
-    },
-    // Add more mock news items
-  ];
+export function NewsFeeds({ ticker }: { ticker: string }) {
+  const { data: news, loading, error } = useNewsData(ticker);
 
   if (!ticker) {
     return (
       <div className="p-6 bg-white rounded-lg shadow-sm">
         <p className="text-gray-500">Enter a ticker to view related news</p>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="p-6 bg-white rounded-lg shadow-sm">
+        <p className="text-gray-500">Loading news...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 bg-white rounded-lg shadow-sm">
+        <p className="text-red-500">Error: {error}</p>
       </div>
     );
   }
@@ -39,6 +42,17 @@ export function NewsFeeds({ ticker }: NewsFeedsProps) {
               <p className="text-sm text-gray-500">
                 {item.source} • {new Date(item.date).toLocaleDateString()}
               </p>
+              <span
+                className={`text-xs px-2 py-1 rounded ${
+                  item.sentiment === "positive"
+                    ? "bg-green-100 text-green-800"
+                    : item.sentiment === "negative"
+                    ? "bg-red-100 text-red-800"
+                    : "bg-gray-100 text-gray-800"
+                }`}
+              >
+                {item.sentiment}
+              </span>
             </div>
             <a
               href={item.url}

@@ -5,12 +5,14 @@ import { SearchForm } from "../forms/SearchForm";
 import { SentimentChart } from "./SentimentChart";
 import { StockInfo } from "./StockInfo";
 import { NewsFeeds } from "./NewsFeeds";
+import { ApiTest } from '../common/ApiTest';
 
 export default function Dashboard() {
   const [ticker, setTicker] = useState("");
 
   return (
     <div className="space-y-6 mt-16">
+      <ApiTest />
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">
           Financial Dashboard
