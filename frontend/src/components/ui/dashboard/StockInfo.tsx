@@ -5,7 +5,7 @@ export function StockInfo({ ticker }: { ticker: string }) {
 
   if (!ticker) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
         <p className="text-gray-500">
           Enter a stock symbol or crypto pair (e.g., BTC/USD)
         </p>
@@ -15,7 +15,7 @@ export function StockInfo({ ticker }: { ticker: string }) {
 
   if (loading) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
         <p className="text-gray-500">Loading market data...</p>
       </div>
     );
@@ -23,7 +23,7 @@ export function StockInfo({ ticker }: { ticker: string }) {
 
   if (error) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
         <p className="text-red-500">Error: {error}</p>
       </div>
     );
@@ -33,7 +33,7 @@ export function StockInfo({ ticker }: { ticker: string }) {
   const title = isCrypto ? "Crypto Price" : "Stock Price";
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-sm text-black">
+    <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm text-black">
       <h2 className="text-lg font-semibold mb-4">{ticker.toUpperCase()} {title}</h2>
       <div className="space-y-4">
         <div>

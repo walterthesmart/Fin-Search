@@ -31,7 +31,7 @@ const TradingViewWidget = memo(({ symbol }: { symbol: string }) => {
           symbol: formattedSymbol,
           interval: "D",
           timezone: "Etc/UTC",
-          theme: "light",
+          theme: "dark",
           style: "1",
           locale: "en",
           enable_publishing: false,
@@ -61,7 +61,7 @@ const TradingViewWidget = memo(({ symbol }: { symbol: string }) => {
   }, [symbol]);
 
   return (
-    <div className="w-full h-[600px] bg-white rounded-lg shadow-sm overflow-hidden">
+    <div className="w-full h-[600px] bg-black rounded-lg shadow-sm overflow-hidden">
       <div
         className="tradingview-widget-container"
         ref={container}
@@ -78,8 +78,8 @@ export function SentimentChart({ ticker }: { ticker: string }) {
 
   if (!ticker) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
-        <p className="text-gray-500">Enter a ticker to view chart</p>
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
+        <p className="text-gray-500">Chart</p>
       </div>
     );
   }
@@ -88,7 +88,7 @@ export function SentimentChart({ ticker }: { ticker: string }) {
   return (
     <div className="space-y-6">
       <TradingViewWidget symbol={ticker} />
-      <div className="p-6 bg-white rounded-lg shadow-sm">
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-4">Market Sentiment Score</h3>
         {loading ? (
           <p className="text-gray-500">Loading sentiment data...</p>

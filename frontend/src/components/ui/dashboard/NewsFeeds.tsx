@@ -6,15 +6,15 @@ export function NewsFeeds({ ticker }: { ticker: string }) {
 
   if (!ticker) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
-        <p className="text-gray-500">Enter a ticker to view related news</p>
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
+        <p className="text-gray-500">News feed</p>
       </div>
     );
   }
 
   if (loading) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
         <p className="text-gray-500">Loading news...</p>
       </div>
     );
@@ -22,24 +22,24 @@ export function NewsFeeds({ ticker }: { ticker: string }) {
 
   if (error) {
     return (
-      <div className="p-6 bg-white rounded-lg shadow-sm">
+      <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
         <p className="text-red-500">Error: {error}</p>
       </div>
     );
   }
 
   return (
-    <div className="p-6 text-black bg-white rounded-lg shadow-sm">
+    <div className="p-6 text-gray-100 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
       <h2 className="text-lg font-semibold mb-4">Latest News</h2>
       <div className="space-y-4">
         {news.map((item) => (
           <div
             key={item.id}
-            className="flex items-start justify-between p-4 border rounded-lg"
+            className="flex items-start justify-between p-4 border border-gray-600 rounded-lg"
           >
             <div>
               <h3 className="font-medium">{item.title}</h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 {item.source} • {new Date(item.date).toLocaleDateString()}
               </p>
               <span

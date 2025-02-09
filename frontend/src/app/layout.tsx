@@ -1,9 +1,13 @@
 import { Navbar } from '@/components/ui/common/Navbar'
 import { Sidebar } from '@/components/ui/common/Sidebar'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Fira_Code } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+const firaCode = Fira_Code({ 
+  subsets: ["latin"],
+  display: 'swap',
+});
+
 
 export const metadata = {
   title: 'FinSearch - AI-Powered Financial Research',
@@ -17,8 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
-        <div className="min-h-screen bg-gray-50">
+      <body className={firaCode.className} suppressHydrationWarning={true}>
+        <div className="min-h-screen bg-[#0F0F12]">
           <Navbar />
           <div className="flex">
             <Sidebar />
