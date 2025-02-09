@@ -16,5 +16,8 @@ console.log("Config loaded:", {
   port: config.port,
   alphaVantageApiKey: config.alphaVantageApiKey ? "Set" : "Not set",
   newsApiKey: config.newsApiKey ? "Set" : "Not set",
+  fcsApiKey: config.fcsApiKey ? "Set" : "Not set",
   corsOrigin: config.cors.origin,
 });
+
+export default config;
