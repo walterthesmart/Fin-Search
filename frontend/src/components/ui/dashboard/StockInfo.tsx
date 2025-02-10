@@ -33,7 +33,7 @@ export function StockInfo({ ticker }: { ticker: string }) {
   const title = isCrypto ? "Crypto Price" : "Stock Price";
 
   return (
-    <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm text-black">
+    <div className="p-6 bg-[#0F0F12] border border-gray-600 rounded-lg shadow-sm">
       <h2 className="text-lg font-semibold mb-4">{ticker.toUpperCase()} {title}</h2>
       <div className="space-y-4">
         <div>

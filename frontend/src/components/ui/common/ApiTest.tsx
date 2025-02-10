@@ -42,12 +42,12 @@ export function ApiTest() {
   return (
     <div
       className={`
-        p-4 m-4 bg-white rounded-lg shadow
+        p-4 m-4 bg-gray-700 rounded-lg shadow
         transition-opacity duration-500 ease-in-out
         ${isVisible ? "opacity-100" : "opacity-0"}
       `}
     >
-      <h2 className="text-lg font-semibold mb-2">API Connection Status</h2>
+      <h2 className="text-lg text-white font-semibold mb-2">API Connection Status</h2>
       <p
         className={
           status.includes("Connected") ? "text-green-600" : "text-red-600"
